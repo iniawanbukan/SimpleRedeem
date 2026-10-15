@@ -4,20 +4,19 @@ Plugin Spigot/Paper untuk Minecraft yang memungkinkan pemain menukarkan kode red
 
 ## Overview
 
-- Kode dapat dibuat dengan nama sendiri atau dibuat secara acak.
-- Hadiah berupa item, uang melalui Vault, atau command yang dijalankan oleh console.
-- Kode dapat dibatasi jumlah penggunaannya, dinonaktifkan, diberi tanggal kedaluwarsa, atau dibuat berbasis permission.
-- Secara default, setiap pemain hanya dapat menukarkan kode yang sama satu kali.
-- Kode dan data pemain yang sudah menukarkan disimpan di `plugins/SimpleRedeem/codes.yml`.
-- Kode otomatis dapat dijadwalkan harian, mingguan, atau satu kali, dengan pilihan webhook.
-- Pengaturan utama, pesan, dan jadwal otomatis dapat disesuaikan melalui file YAML.
+* Kode dapat dibuat dengan nama sendiri atau dibuat secara acak.
+* Hadiah berupa command console yang dijalankan saat kode ditukarkan.
+* Kode dapat dibatasi jumlah penggunaannya, dinonaktifkan, diberi tanggal kedaluwarsa, atau dibuat berbasis permission.
+* Secara default, setiap pemain hanya dapat menukarkan kode yang sama satu kali.
+* Kode dan data pemain yang sudah menukarkan disimpan di `plugins/SimpleRedeem/codes.yml`.
+* Kode otomatis dapat dijadwalkan harian, mingguan, atau satu kali, dengan pilihan webhook.
+* Pengaturan utama, pesan, dan jadwal otomatis dapat disesuaikan melalui file YAML.
 
 ## Persyaratan
 
-- Minecraft server versi 1.21 atau lebih baru (sesuai metadata plugin).
-- Java 21.
-- Vault dan plugin ekonomi yang mendukung Vault diperlukan untuk hadiah uang.
-- PlaceholderAPI bersifat opsional; placeholder pemain pada command hadiah akan diproses jika tersedia.
+* Minecraft server versi 1.21 atau lebih baru (sesuai metadata plugin).
+* Java 21.
+* PlaceholderAPI bersifat opsional; placeholder pemain pada command hadiah akan diproses jika tersedia.
 
 ## Instalasi
 
@@ -32,6 +31,7 @@ Jalankan perintah berikut dari direktori proyek:
 
 ```sh
 mvn clean package
+
 ```
 
 File JAR hasil build tersedia di folder `target/`.
@@ -41,7 +41,7 @@ File JAR hasil build tersedia di folder `target/`.
 ### Pemain
 
 | Command | Keterangan |
-|---|---|
+| --- | --- |
 | `/redeem <kode>` | Menukarkan kode dan menerima hadiahnya. Hanya dapat dijalankan oleh pemain. |
 
 ### Admin
@@ -49,21 +49,18 @@ File JAR hasil build tersedia di folder `target/`.
 `/sr` juga dapat dipanggil menggunakan alias `/simpleredeem`.
 
 | Command | Keterangan |
-|---|---|
+| --- | --- |
 | `/sr help` | Menampilkan daftar subcommand. |
-| `/sr new <panjang\|kode>` | Membuat kode acak dengan panjang yang diminta, atau membuat kode dengan nama yang diberikan. |
+| `/sr new <panjang|kode>` | Membuat kode acak dengan panjang yang diminta, atau membuat kode dengan nama yang diberikan. |
 | `/sr delete <kode>` | Menghapus kode. |
 | `/sr info <kode>` | Melihat status, expiry, jumlah penggunaan, dan command reward kode. |
 | `/sr addcmd <kode> <command>` | Menambahkan command console sebagai hadiah. |
 | `/sr delcmd <kode> <nomor>` | Menghapus command reward berdasarkan nomor yang ditampilkan di info. |
-| `/sr addreward <kode> item <MATERIAL> [jumlah]` | Menambahkan hadiah item. |
-| `/sr addreward <kode> money <jumlah>` | Menambahkan hadiah uang melalui Vault. |
-| `/sr addreward <kode> cmd <command>` | Menambahkan command console sebagai hadiah. |
-| `/sr uses <kode> <jumlah\|infinite>` | Mengatur batas penggunaan; `infinite` berarti tanpa batas. |
+| `/sr uses <kode> <jumlah|infinite>` | Mengatur batas penggunaan; `infinite` berarti tanpa batas. |
 | `/sr bulk <kode> <jumlah>` | Membuat salinan kode beserta pengaturan dan reward-nya. |
-| `/sr permbased <kode> <true\|false>` | Mengaktifkan atau menonaktifkan syarat permission khusus untuk kode. |
-| `/sr enabled <kode> <true\|false>` | Mengaktifkan atau menonaktifkan kode. |
-| `/sr expiry <kode> <dd/MM/yyyy\|none>` | Mengatur tanggal kedaluwarsa atau menghapusnya dengan `none`. |
+| `/sr permbased <kode> <true|false>` | Mengaktifkan atau menonaktifkan syarat permission khusus untuk kode. |
+| `/sr enabled <kode> <true|false>` | Mengaktifkan atau menonaktifkan kode. |
+| `/sr expiry <kode> <dd/MM/yyyy|none>` | Mengatur tanggal kedaluwarsa atau menghapusnya dengan `none`. |
 | `/sr debug` | Mengaktifkan atau menonaktifkan debug mode. |
 | `/sr version` | Menampilkan versi plugin. |
 | `/sr debuginfo` | Menampilkan status debug dan jumlah kode yang dimuat. |
@@ -73,25 +70,14 @@ File JAR hasil build tersedia di folder `target/`.
 
 Command reward dijalankan oleh console. Placeholder yang tersedia:
 
-- `{PLAYER}` atau `%player%` — nama pemain.
-- `%uuid%` — UUID pemain.
-- `%code%` — kode yang ditukarkan.
-- PlaceholderAPI juga diterapkan jika plugin PlaceholderAPI terpasang.
-
-Contoh:
-
-```text
-/sr addreward WELCOME cmd eco give {PLAYER} 100
-/sr addreward WELCOME item DIAMOND 3
-/sr addreward WELCOME money 250
-```
+* `{PLAYER}` atau `%player%` — nama pemain.
 
 ## Permissions
 
 Semua permission admin di bawah ini secara default diberikan kepada operator. `sr.admin` memberikan akses penuh ke seluruh subcommand admin.
 
 | Permission | Fungsi |
-|---|---|
+| --- | --- |
 | `sr.admin` | Akses penuh admin. |
 | `sr.admin.create` | Permission create yang dideklarasikan plugin. |
 | `sr.admin.delete` | Menghapus kode. |
@@ -110,12 +96,13 @@ Semua permission admin di bawah ini secara default diberikan kepada operator. `s
 | `sr.admin.debuginfo` | Melihat informasi debug. |
 | `sr.user.redeem` | Dideklarasikan untuk pemain dengan default `true`, tetapi tidak digunakan sebagai pemeriksaan akses umum oleh command `/redeem`. |
 
-**Catatan permission:** Ada perbedaan nama pada implementasi subcommand pembuatan kode: pemeriksaan `/sr new` menggunakan `sr.admin.new`, sedangkan plugin mendeklarasikan `sr.admin.create`. Subcommand `/sr addreward` menggunakan `sr.admin.addreward`, tetapi node tersebut tidak dideklarasikan di `plugin.yml`. Untuk memberikan akses admin tanpa kendala ini, gunakan `sr.admin`; jika mengatur akses granular, berikan node yang dipakai oleh pemeriksaan runtime (`sr.admin.new` dan `sr.admin.addreward`).
+**Catatan permission:** Ada perbedaan nama pada implementasi subcommand pembuatan kode: pemeriksaan `/sr new` menggunakan `sr.admin.new`, sedangkan plugin mendeklarasikan `sr.admin.create`. Untuk memberikan akses admin tanpa kendala ini, gunakan `sr.admin`; jika mengatur akses granular, berikan node `sr.admin.new` untuk pembuatan kode.
 
 Jika kode diaktifkan sebagai permission-based, pemain juga harus memiliki:
 
 ```text
 sr.user.redeem.<kode-huruf-kecil>
+
 ```
 
 Contoh: kode `WELCOME` memerlukan `sr.user.redeem.welcome`.
@@ -124,20 +111,19 @@ Contoh: kode `WELCOME` memerlukan `sr.user.redeem.welcome`.
 
 File konfigurasi berada di `plugins/SimpleRedeem/`:
 
-- `config.yml` — sensitivitas huruf kode, batas panjang, aturan satu penukaran per pemain, broadcast, hadiah uang, dan debug mode.
-- `message.yml` — prefix dan teks pesan plugin.
-- `auto.yml` — jadwal kode otomatis, zona waktu, dan pengaturan webhook.
-- `codes.yml` — dibuat dan dikelola plugin untuk menyimpan kode, reward, penggunaan, dan pemain yang sudah menukarkan.
+* `config.yml` — sensitivitas huruf kode, batas panjang, aturan satu penukaran per pemain, broadcast, dan debug mode.
+* `message.yml` — prefix dan teks pesan plugin.
+* `auto.yml` — jadwal kode otomatis, zona waktu, dan pengaturan webhook.
+* `codes.yml` — dibuat dan dikelola plugin untuk menyimpan kode, reward, penggunaan, dan pemain yang sudah menukarkan.
 
 Pengaturan default yang penting di `config.yml`:
 
 | Pengaturan | Default | Arti |
-|---|---:|---|
+| --- | --- | --- |
 | `case-sensitive` | `false` | Kode tidak membedakan huruf besar dan kecil. |
 | `one-redeem-per-player` | `true` | Pemain hanya dapat menukarkan kode yang sama satu kali. |
 | `max-code-length` | `32` | Panjang maksimum kode. |
 | `broadcast-on-redeem` | `false` | Mengumumkan penukaran kode kepada server. |
-| `money-enabled` | `true` | Tersedia di konfigurasi, tetapi saat ini tidak digunakan untuk mengaktifkan atau menonaktifkan hadiah uang. Vault tetap diperlukan untuk membayar uang. |
 | `debug-mode` | `false` | Mengaktifkan mode debug. Dalam mode ini pemeriksaan penukaran dan pengurangan jumlah penggunaan dilewati. |
 
 Jadwal otomatis di `auto.yml` dinonaktifkan secara default. Aktifkan `enabled`, lalu atur entri `schedules` dengan `type` (`daily`, `weekly`, atau `once`), waktu, kode, jumlah penggunaan, dan reward. Webhook juga dinonaktifkan secara default; isi URL hanya jika ingin mengirim notifikasi ke endpoint webhook.
