@@ -1,5 +1,5 @@
 # Automatic redeem code configuration
-config-version: 1
+config-version: 2
 enabled: false
 timezone: "Asia/Jakarta"   # Asia/Jakarta, Asia/Makassar, Asia/Jayapura, UTC, etc.
 check-interval-seconds: 30

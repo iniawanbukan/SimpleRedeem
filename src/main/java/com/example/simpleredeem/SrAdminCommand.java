@@ -40,7 +40,6 @@ public class SrAdminCommand implements CommandExecutor {
             case "info": return handleInfo(sender, args);
             case "addcmd": return handleAddCmd(sender, args);
             case "delcmd": return handleDelCmd(sender, args);
-            case "addreward": return handleAddReward(sender, args);
             case "uses": return handleUses(sender, args);
             case "bulk": return handleBulk(sender, args);
             case "permbased": return handlePermBased(sender, args);
@@ -169,38 +168,6 @@ public class SrAdminCommand implements CommandExecutor {
         int pos = cmdPositions.get(idx - 1);
         if (!cm.removeReward(code, pos)) { s.sendMessage(plugin.msg("cmd_invalid")); return true; }
         s.sendMessage(plugin.msg("cmd_removed").replace("%code%", code).replace("%index%", String.valueOf(idx)));
-        return true;
-    }
-
-    private boolean handleAddReward(CommandSender s, String[] args) {
-        // usage: addreward <code> item/cmd/money ...
-        if (args.length < 4) { s.sendMessage(plugin.msg("usage_addreward") != null ? plugin.msg("usage_addreward") : plugin.msg("usage_admin")); return true; }
-        // reuse previous style
-        String code = args[1];
-        if (!cm.exists(code)) { s.sendMessage(plugin.msg("code_not_found").replace("%code%", code)); return true; }
-        String type = args[2].toLowerCase();
-        String reward;
-        if (type.equals("item")) {
-            if (args.length < 5) return true;
-            String mat = args[3].toUpperCase();
-            int amt = 1;
-            try { if (args.length >= 5) amt = Integer.parseInt(args[4]); } catch (NumberFormatException ignored) {}
-            reward = "item:" + mat + ":" + amt;
-        } else if (type.equals("money")) {
-            reward = "money:" + args[3];
-        } else if (type.equals("cmd") || type.equals("command")) {
-            StringBuilder sb = new StringBuilder();
-            for (int i = 3; i < args.length; i++) {
-                if (i > 3) sb.append(' ');
-                sb.append(args[i]);
-            }
-            reward = "cmd:" + sb.toString();
-        } else {
-            s.sendMessage(plugin.msg("usage_admin"));
-            return true;
-        }
-        cm.addReward(code, reward);
-        s.sendMessage(plugin.msg("reward_added") != null ? plugin.msg("reward_added").replace("%code%", code).replace("%reward%", reward) : plugin.msg("cmd_added").replace("%code%", code).replace("%index%", reward));
         return true;
     }
 

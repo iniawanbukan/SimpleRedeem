@@ -1,5 +1,5 @@
 # SimpleRedeem configuration
-config-version: 1
+config-version: 2
 case-sensitive: false
 one-redeem-per-player: true
 max-code-length: 32

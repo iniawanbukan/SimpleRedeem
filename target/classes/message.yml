@@ -1,4 +1,4 @@
-config-version: 1
+config-version: 2
 prefix: "&6[SimpleRedeem]&r "
 
 messages:
@@ -28,7 +28,6 @@ messages:
   usage_permbased: "&cUsage: &e/sr permbased <id> <true|false>"
   usage_enabled: "&cUsage: &e/sr enabled <id> <true|false>"
   usage_expiry: "&cUsage: &e/sr expiry <id> <dd/MM/yyyy>"
-  usage_addreward: "&cUsage: &e/sr addreward <code> <item|cmd|money> ..."
 
   # Admin results
   code_created: "&aCode &e%code%&a has been created! (limit: %limit%)"
@@ -38,7 +37,6 @@ messages:
   code_too_long: "&cCode is too long (max %limit% chars)."
 
   cmd_added: "&aCommand added to code &e%code%&a (id: %index%)."
-  reward_added: "&aReward added to code &e%code%&a: &f%reward%"
   cmd_removed: "&aCommand #%index% removed from code &e%code%&a."
   cmd_invalid: "&cInvalid command index."
 
