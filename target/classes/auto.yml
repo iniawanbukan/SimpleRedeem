@@ -1,0 +1,31 @@
+# Automatic redeem code configuration
+config-version: 1
+enabled: false
+timezone: "Asia/Jakarta"   # Asia/Jakarta, Asia/Makassar, Asia/Jayapura, UTC, etc.
+check-interval-seconds: 30
+
+# Global webhook defaults
+webhook:
+  enabled: false
+  url: ""
+  username: "SimpleRedeem"
+
+schedules:
+  # Example (disabled by default)
+  - enabled: false
+    code: "WEEKEND"
+    uses: 100
+    unlimited-uses: false
+    expiry: "none"          # dd/MM/yyyy or none
+    permbased: false
+    rewards:
+      - "cmd:eco give {PLAYER} 10000"
+    schedule:
+      type: "weekly"        # weekly | daily | once
+      day-of-week: "SATURDAY"
+      date: ""              # for once: dd/MM/yyyy
+      time: "13:00"         # HH:mm
+    webhook:
+      enabled: true
+      title: "Redeem Code Released!"
+      description: "Code: **{code}**\nUses: {uses}\nExpiry: {expiry}"

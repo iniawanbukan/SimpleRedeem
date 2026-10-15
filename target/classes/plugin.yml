@@ -1,0 +1,66 @@
+name: SimpleRedeem
+version: 1.0.0
+main: com.example.simpleredeem.SimpleRedeem
+api-version: "1.21"
+description: Simple redeem code plugin for Minecraft 1.21+
+authors: [AI]
+commands:
+  sr:
+    description: SimpleRedeem admin commands
+    usage: /sr <subcommand>
+    aliases: [simpleredeem]
+  redeem:
+    description: Redeem a code
+    usage: /redeem <code>
+permissions:
+  sr.admin:
+    description: Full redeem admin access
+    default: op
+  sr.admin.create:
+    description: Create codes
+    default: op
+  sr.admin.delete:
+    description: Delete codes
+    default: op
+  sr.admin.info:
+    description: View code info
+    default: op
+  sr.admin.addcmd:
+    description: Add commands to codes
+    default: op
+  sr.admin.delcmd:
+    description: Delete commands from codes
+    default: op
+  sr.admin.uses:
+    description: Set code uses
+    default: op
+  sr.admin.bulk:
+    description: Bulk copy codes
+    default: op
+  sr.admin.permbased:
+    description: Toggle permission-based codes
+    default: op
+  sr.admin.enabled:
+    description: Enable/disable codes
+    default: op
+  sr.admin.expiry:
+    description: Set code expiry
+    default: op
+  sr.admin.debug:
+    description: Toggle debug mode
+    default: op
+  sr.admin.help:
+    description: View admin help
+    default: op
+  sr.admin.reload:
+    description: Reload plugin
+    default: op
+  sr.admin.version:
+    description: View version
+    default: op
+  sr.admin.debuginfo:
+    description: View debug info
+    default: op
+  sr.user.redeem:
+    description: Redeem codes
+    default: true

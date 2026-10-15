@@ -1,0 +1,72 @@
+config-version: 1
+prefix: "&6[SimpleRedeem]&r "
+
+messages:
+  # User
+  usage_redeem: "&cUsage: &e/redeem <code>"
+  no_permission: "&cYou don't have permission to do that."
+  player_only: "&cThis command can only be used by players."
+
+  code_redeemed: "&aYou redeemed &e%code%&a and received your reward!"
+  code_already_used: "&cYou have already used this code."
+  code_max_uses: "&cThis code has reached its maximum number of uses."
+  code_invalid: "&cInvalid code."
+  code_disabled: "&cThis code is currently disabled."
+  code_expired: "&cThis code has expired."
+  code_no_perm: "&cYou don't have permission to redeem this code."
+  code_broadcast: "&e%player% &ahas redeemed code &e%code%&a!"
+
+  # Admin usage
+  usage_admin: "&cUsage: &e/sr <subcommand>. Use &e/sr help &cfor a list."
+  usage_new: "&cUsage: &e/sr new <length|code>"
+  usage_delete: "&cUsage: &e/sr delete <id>"
+  usage_info: "&cUsage: &e/sr info <id>"
+  usage_addcmd: "&cUsage: &e/sr addcmd <id> <command>"
+  usage_delcmd: "&cUsage: &e/sr delcmd <id> <command id>"
+  usage_uses: "&cUsage: &e/sr uses <id> <number|infinite>"
+  usage_bulk: "&cUsage: &e/sr bulk <id> <copies>"
+  usage_permbased: "&cUsage: &e/sr permbased <id> <true|false>"
+  usage_enabled: "&cUsage: &e/sr enabled <id> <true|false>"
+  usage_expiry: "&cUsage: &e/sr expiry <id> <dd/MM/yyyy>"
+  usage_addreward: "&cUsage: &e/sr addreward <code> <item|cmd|money> ..."
+
+  # Admin results
+  code_created: "&aCode &e%code%&a has been created! (limit: %limit%)"
+  code_deleted: "&aCode &e%code%&a has been deleted."
+  code_not_found: "&cCode &e%code%&c was not found."
+  code_exists: "&cCode &e%code%&c already exists."
+  code_too_long: "&cCode is too long (max %limit% chars)."
+
+  cmd_added: "&aCommand added to code &e%code%&a (id: %index%)."
+  reward_added: "&aReward added to code &e%code%&a: &f%reward%"
+  cmd_removed: "&aCommand #%index% removed from code &e%code%&a."
+  cmd_invalid: "&cInvalid command index."
+
+  uses_set: "&aUsage limit for &e%code%&a set to: &f%limit%"
+  bulk_done: "&aCreated &e%count%&a copies of code &e%code%&a."
+  permbased_set: "&aPermission-based for &e%code%&a set to: &f%value%"
+  enabled_set: "&aEnabled state for &e%code%&a set to: &f%value%"
+  expiry_set: "&aExpiry for &e%code%&a set to: &f%value%"
+  expiry_cleared: "&aExpiry cleared for &e%code%&a."
+
+  debug_toggled: "&aDebug mode: &f%value%"
+  plugin_reloaded: "&aSimpleRedeem has been reloaded."
+  vault_missing: "&cVault is not installed; money rewards disabled."
+
+  list_header: "&eRedeem codes:"
+  list_item: "&a%code% &7- &f%status% &7(cmds: %count%)"
+  info_header: "&eInfo for code &f%code%:"
+  info_enabled: "&7Enabled: &f%value%"
+  info_permbased: "&7Permission-based: &f%value%"
+  info_expiry: "&7Expiry: &f%value%"
+  info_uses: "&7Uses: &f%status%"
+  info_commands: "&7Commands:"
+  info_command_item: "&f  %index%. &7%command%"
+  info_none: "&7  (none)"
+
+  help_header: "&eSimpleRedeem admin commands:"
+  version_info: "&aSimpleRedeem v%version%"
+
+  # Placeholders
+  uses_unlimited: "unlimited"
+  uses_remaining_unlimited: "unlimited"

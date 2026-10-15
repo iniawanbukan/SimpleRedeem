@@ -1,0 +1,10 @@
+# SimpleRedeem configuration
+config-version: 1
+case-sensitive: false
+one-redeem-per-player: true
+max-code-length: 32
+broadcast-on-redeem: false
+money-enabled: true
+debug-mode: false
+
+# Automatic redeem code settings moved to auto.yml
